@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kumpircim Blue Waffle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -130,40 +133,63 @@
       text-align: center;
     }
 
-    .logo-wrap {
-      width: 180px;
-      height: 180px;
-      margin-bottom: 1.5rem;
-      border-radius: 50%;
-      background: radial-gradient(circle at 50% 40%, rgba(255, 179, 71, 0.25), transparent 70%);
+    /* Tipografik logo */
+    .logo {
+      margin-bottom: 1.8rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
+      line-height: 0.95;
+      filter: drop-shadow(0 8px 22px rgba(0,0,0,0.45));
       animation: float 5s ease-in-out infinite;
+      user-select: none;
     }
 
-    .logo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 50%;
+    .logo-top,
+    .logo-bottom {
+      font-family: 'Bebas Neue', 'Oswald', 'Impact', 'Arial Black', sans-serif;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      /* Beyaz hatlar: çok yönlü text-shadow ile dış kontur */
+      text-shadow:
+        -2px -2px 0 #fff,
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff,
+        -2px  0   0 #fff,
+         2px  0   0 #fff,
+         0   -2px 0 #fff,
+         0    2px 0 #fff,
+         0    6px 14px rgba(0,0,0,0.45);
+    }
+
+    .logo-top {
+      font-size: 3.4rem;
+      color: #ff8a3d;
+      transform: rotate(-2deg);
+    }
+
+    .logo-bottom {
+      font-size: 2.5rem;
+      color: #2563b8;
+      margin-top: 0.35rem;
+      transform: rotate(1.5deg);
+    }
+
+    /* @supports varsa daha temiz kontur kullan */
+    @supports (-webkit-text-stroke: 2px white) {
+      .logo-top,
+      .logo-bottom {
+        -webkit-text-stroke: 2.5px #fff;
+        paint-order: stroke fill;
+        text-shadow: 0 6px 14px rgba(0,0,0,0.45);
+      }
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-8px); }
-    }
-
-    h1 {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.4rem;
-      background: linear-gradient(90deg, #fff 0%, #ffb347 50%, #fff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
     }
 
     .tagline {
@@ -227,7 +253,8 @@
 
     @media (max-width: 360px) {
       h1 { font-size: 1.65rem; }
-      .logo-wrap { width: 150px; height: 150px; }
+      .logo-top    { font-size: 2.7rem; }
+      .logo-bottom { font-size: 2rem; }
     }
   </style>
 </head>
@@ -240,17 +267,16 @@
   <div class="shooting-star delay"></div>
 
   <div class="container">
-    <div class="logo-wrap">
-      <img src="logo.png" alt="Kumpircim Blue Waffle Logo"
-           onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'font-size:3rem\'>🧇</div>';"/>
+    <div class="logo" aria-label="Kumpircim Blue Waffle">
+      <span class="logo-top">Kumpircim</span>
+      <span class="logo-bottom">Blue Waffle</span>
     </div>
 
-    <h1>Kumpircim Blue Waffle</h1>
-    <p class="tagline">Hoş geldiniz! Ne yapmak istersiniz?</p>
+    <p class="tagline">Hoş geldiniz!</p>
 
     <div class="buttons">
       <a class="btn btn-maps"
-         href="https://maps.app.goo.gl/eUYKEcHcNVwcoZ2N6?g_st=iw"
+         href="https://www.google.com/maps/place/kumpircim/@40.2291949,28.8479695,17z/data=!3m1!4b1!4m6!3m5!1s0x14ca0f6370fc2197:0x8ad833cf6dbb7e07!8m2!3d40.2291949!4d28.8479695!16s%2Fg%2F11y32n7b_f?hl=tr-tr&entry=ttu&g_ep=EgoyMDI2MDUxNy4wIKXMDSoASAFQAw%3D%3D"
          target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.401 8.168L12 19.255l-7.335 3.91 1.401-8.168L.132 9.21l8.2-1.192z"/>
